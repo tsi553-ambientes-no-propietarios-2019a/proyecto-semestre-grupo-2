@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `compra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `compra` (
-  `IDCOMPRA` int(11) NOT NULL,
+  `IDCOMPRA` int(15) NOT NULL,
   `IDPAQUETE` int(11) DEFAULT NULL,
   `ID` int(11) NOT NULL,
   `FECHA_COM` date DEFAULT NULL,
@@ -177,7 +177,7 @@ DROP TABLE IF EXISTS `emp__afiliada`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `emp__afiliada` (
-  `ID_EMP` int(11) NOT NULL,
+  `ID_EMP` int(15) NOT NULL,
   `ID_TERM` int(11) DEFAULT NULL,
   `NOMBRE_EMP` varchar(100) NOT NULL,
   `EMAIL_EMP` varchar(100) NOT NULL,
