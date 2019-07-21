@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Habitaciones{% endblock %}
+
+{% block body %}
+    <h1>Create new Habitaciones</h1>
+
+    {{ include('habitaciones/_form.html.twig') }}
+
+    <a href="{{ path('habitaciones_index') }}">back to list</a>
+{% endblock %}

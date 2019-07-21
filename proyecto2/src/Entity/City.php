@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,93 +19,173 @@ class City
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Places")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $cod_city;
-
-    /**
      * @ORM\Column(type="integer")
      */
-    private $id_terminal;
+    private $CityCod;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name_city;
+    private $Name;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\OneToMany(targetEntity="App\Entity\Places", mappedBy="City")
      */
-    private $longitud;
+    private $Places;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Provincia", inversedBy="cod_provincia")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Province", inversedBy="Cities")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $provincia;
+    private $Province;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Terminal", mappedBy="City")
+     */
+    private $Terminals;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hotel", mappedBy="City")
+     */
+    private $Hotels;
+
+    public function __construct()
+    {
+        $this->Places = new ArrayCollection();
+        $this->Terminals = new ArrayCollection();
+        $this->Hotels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCodCity(): ?Places
+    public function getCityCod(): ?int
     {
-        return $this->cod_city;
+        return $this->CityCod;
     }
 
-    public function setCodCity(?Places $cod_city): self
+    public function setCityCod(int $CityCod): self
     {
-        $this->cod_city = $cod_city;
+        $this->CityCod = $CityCod;
 
         return $this;
     }
 
-    public function getIdTerminal(): ?int
+    public function getName(): ?string
     {
-        return $this->id_terminal;
+        return $this->Name;
     }
 
-    public function setIdTerminal(int $id_terminal): self
+    public function setName(string $Name): self
     {
-        $this->id_terminal = $id_terminal;
+        $this->Name = $Name;
 
         return $this;
     }
 
-    public function getNameCity(): ?string
+    /**
+     * @return Collection|Places[]
+     */
+    public function getPlaces(): Collection
     {
-        return $this->name_city;
+        return $this->Places;
     }
 
-    public function setNameCity(string $name_city): self
+    public function addPlace(Places $place): self
     {
-        $this->name_city = $name_city;
+        if (!$this->Places->contains($place)) {
+            $this->Places[] = $place;
+            $place->setCity($this);
+        }
 
         return $this;
     }
 
-    public function getLongitud(): ?float
+    public function removePlace(Places $place): self
     {
-        return $this->longitud;
-    }
-
-    public function setLongitud(float $longitud): self
-    {
-        $this->longitud = $longitud;
+        if ($this->Places->contains($place)) {
+            $this->Places->removeElement($place);
+            // set the owning side to null (unless already changed)
+            if ($place->getCity() === $this) {
+                $place->setCity(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getProvincia(): ?Provincia
+    public function getProvince(): ?Province
     {
-        return $this->provincia;
+        return $this->Province;
     }
 
-    public function setProvincia(?Provincia $provincia): self
+    public function setProvince(?Province $Province): self
     {
-        $this->provincia = $provincia;
+        $this->Province = $Province;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Terminal[]
+     */
+    public function getTerminals(): Collection
+    {
+        return $this->Terminals;
+    }
+
+    public function addTerminal(Terminal $terminal): self
+    {
+        if (!$this->Terminals->contains($terminal)) {
+            $this->Terminals[] = $terminal;
+            $terminal->setCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTerminal(Terminal $terminal): self
+    {
+        if ($this->Terminals->contains($terminal)) {
+            $this->Terminals->removeElement($terminal);
+            // set the owning side to null (unless already changed)
+            if ($terminal->getCity() === $this) {
+                $terminal->setCity(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hotel[]
+     */
+    public function getHotels(): Collection
+    {
+        return $this->Hotels;
+    }
+
+    public function addHotel(Hotel $hotel): self
+    {
+        if (!$this->Hotels->contains($hotel)) {
+            $this->Hotels[] = $hotel;
+            $hotel->setCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHotel(Hotel $hotel): self
+    {
+        if ($this->Hotels->contains($hotel)) {
+            $this->Hotels->removeElement($hotel);
+            // set the owning side to null (unless already changed)
+            if ($hotel->getCity() === $this) {
+                $hotel->setCity(null);
+            }
+        }
 
         return $this;
     }

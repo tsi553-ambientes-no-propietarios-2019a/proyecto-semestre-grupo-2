@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Asiento{% endblock %}
+
+{% block body %}
+    <h1>Asiento</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ asiento.id }}</td>
+            </tr>
+            <tr>
+                <th>Num_asiento</th>
+                <td>{{ asiento.numAsiento }}</td>
+            </tr>
+            <tr>
+                <th>Tipo_asiento</th>
+                <td>{{ asiento.tipoAsiento }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('asiento_index') }}">back to list</a>
+
+    <a href="{{ path('asiento_edit', {'id': asiento.id}) }}">edit</a>
+
+    {{ include('asiento/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotel index{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Hoteles</h1>
+    <br>
+        <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nº</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">e-mail</th>
+                <th scope="col">Sitio web</th>
+                <th scope="col">Numero de Cuartos</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hotel in hotels %}
+            <tr>
+                <th scope="row">{{ hotel.id }}</td>
+                <td>{{ hotel.name }}</td>
+                <td>{{ hotel.phone }}</td>
+                <td>{{ hotel.email }}</td>
+                <td>{{ hotel.webSite }}</td>
+                <td>{{ hotel.noRooms }}</td>
+                <td>
+                    <a href="{{ path('hotel_show', {'id': hotel.id}) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ path('hotel_edit', {'id': hotel.id}) }}" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ {% if is_granted("ROLE_ADMIN") %}
+    <a href="{{ path('hotel_new') }}" class="btn btn-primary">Nuevo Elemento</a>
+     {% endif %}
+    </div>
+{% endblock %}

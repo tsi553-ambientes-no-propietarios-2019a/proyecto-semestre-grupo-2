@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compra{% endblock %}
+
+{% block body %}
+    <h1>Compra</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ compra.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_com</th>
+                <td>{{ compra.fechaCom ? compra.fechaCom|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>No_asientos</th>
+                <td>{{ compra.noAsientos }}</td>
+            </tr>
+            <tr>
+                <th>Total_asientos</th>
+                <td>{{ compra.totalAsientos }}</td>
+            </tr>
+            <tr>
+                <th>No_habita</th>
+                <td>{{ compra.noHabita }}</td>
+            </tr>
+            <tr>
+                <th>Total_paquetes</th>
+                <td>{{ compra.totalPaquetes }}</td>
+            </tr>
+            <tr>
+                <th>No_paquetes</th>
+                <td>{{ compra.noPaquetes }}</td>
+            </tr>
+            <tr>
+                <th>Total_habita</th>
+                <td>{{ compra.totalHabita }}</td>
+            </tr>
+            <tr>
+                <th>Total_compra</th>
+                <td>{{ compra.totalCompra }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('compra_index') }}">back to list</a>
+
+    <a href="{{ path('compra_edit', {'id': compra.id}) }}">edit</a>
+
+    {{ include('compra/_delete_form.html.twig') }}
+{% endblock %}

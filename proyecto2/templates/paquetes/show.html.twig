@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paquetes{% endblock %}
+
+{% block body %}
+ <div class="container">
+    <h1>Paquetes</h1>
+    <br>
+        <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Nº</th>
+                <td>{{ paquete.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ paquete.name }}</td>
+            </tr>
+            <tr>
+                <th>Número de dias</th>
+                <td>{{ paquete.noDays }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ paquete.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <center>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="{{ path('paquetes_index') }}" class="btn btn-success">Regresar</a>
+            </div>
+            <div class="col-sm-4">
+                 <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-secondary">Editar</a>
+            </div>
+            <div class="col-sm-4">
+                {{ include('paquetes/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+    </center>  
+</div>
+{% endblock %}

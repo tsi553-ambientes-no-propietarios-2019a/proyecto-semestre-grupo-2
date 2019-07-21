@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Asiento index{% endblock %}
+
+{% block body %}
+    <h1>Asiento index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num_asiento</th>
+                <th>Tipo_asiento</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for asiento in asientos %}
+            <tr>
+                <td>{{ asiento.id }}</td>
+                <td>{{ asiento.numAsiento }}</td>
+                <td>{{ asiento.tipoAsiento }}</td>
+                <td>
+                    <a href="{{ path('asiento_show', {'id': asiento.id}) }}">show</a>
+                    <a href="{{ path('asiento_edit', {'id': asiento.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('asiento_new') }}">Create new</a>
+{% endblock %}

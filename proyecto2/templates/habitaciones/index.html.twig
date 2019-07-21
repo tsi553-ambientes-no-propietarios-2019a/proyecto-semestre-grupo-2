@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Habitaciones index{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Habitaciones</h1>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nº</th>
+                <th scope="col">Tipo de habitacion</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Numero de camas</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for habitacione in habitaciones %}
+            <tr>
+                <th scope="row">{{ habitacione.id }}</td>
+                <td>{{ habitacione.typeRoom }}</td>
+                <td>{{ habitacione.status }}</td>
+                <td>{{ habitacione.noBeds }}</td>
+                <td>
+                    <a href="{{ path('habitaciones_show', {'id': habitacione.id}) }}"class="btn btn-info">Ver</a>
+                    <a href="{{ path('habitaciones_edit', {'id': habitacione.id}) }}"class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('habitaciones_new') }}" class="btn btn-primary">Nuevo Elemento</a>
+     </div>
+{% endblock %}

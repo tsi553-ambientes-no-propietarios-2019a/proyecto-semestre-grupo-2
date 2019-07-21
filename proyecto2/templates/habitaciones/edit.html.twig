@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Habitaciones{% endblock %}
+
+{% block body %}
+    <h1>Edit Habitaciones</h1>
+
+    {{ include('habitaciones/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('habitaciones_index') }}">back to list</a>
+
+    {{ include('habitaciones/_delete_form.html.twig') }}
+{% endblock %}

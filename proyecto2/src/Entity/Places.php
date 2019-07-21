@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,24 +19,9 @@ class Places
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_lugar;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $cod_city;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_pakage;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name_place;
+    private $PlaceName;
 
     /**
      * @ORM\Column(type="float")
@@ -46,55 +33,41 @@ class Places
      */
     private $latitude;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Bus", mappedBy="Places")
+     */
+    private $buses;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Paquetes", mappedBy="Places")
+     */
+    private $Paquetes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="Places")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $City;
+
+    public function __construct()
+    {
+        $this->Buses = new ArrayCollection();
+        $this->Paquetes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdLugar(): ?int
+    public function getPlaceName(): ?string
     {
-        return $this->id_lugar;
+        return $this->PlaceName;
     }
 
-    public function setIdLugar(int $id_lugar): self
+    public function setPlaceName(string $PlaceName): self
     {
-        $this->id_lugar = $id_lugar;
-
-        return $this;
-    }
-
-    public function getCodCity(): ?int
-    {
-        return $this->cod_city;
-    }
-
-    public function setCodCity(int $cod_city): self
-    {
-        $this->cod_city = $cod_city;
-
-        return $this;
-    }
-
-    public function getIdPakage(): ?int
-    {
-        return $this->id_pakage;
-    }
-
-    public function setIdPakage(int $id_pakage): self
-    {
-        $this->id_pakage = $id_pakage;
-
-        return $this;
-    }
-
-    public function getNamePlace(): ?string
-    {
-        return $this->name_place;
-    }
-
-    public function setNamePlace(string $name_place): self
-    {
-        $this->name_place = $name_place;
+        $this->PlaceName = $PlaceName;
 
         return $this;
     }
@@ -119,6 +92,74 @@ class Places
     public function setLatitude(float $latitude): self
     {
         $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bus[]
+     */
+    public function getBuses(): Collection
+    {
+        return $this->Buses;
+    }
+
+    public function addBuses(Bus $affCompany): self
+    {
+        if (!$this->Buses->contains($affCompany)) {
+            $this->Buses[] = $buses;
+            $buses->addPlace($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBuses(Bus $buses): self
+    {
+        if ($this->Buses->contains($buses)) {
+            $this->Buses->removeElement($buses);
+            $buses->removePlace($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Paquetes[]
+     */
+    public function getPaquetes(): Collection
+    {
+        return $this->Paquetes;
+    }
+
+    public function addPaquete(Paquetes $paquete): self
+    {
+        if (!$this->Paquetes->contains($paquete)) {
+            $this->Paquetes[] = $paquete;
+            $paquete->addPlace($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaquete(Paquetes $paquete): self
+    {
+        if ($this->Paquetes->contains($paquete)) {
+            $this->Paquetes->removeElement($paquete);
+            $paquete->removePlace($this);
+        }
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->City;
+    }
+
+    public function setCity(?City $City): self
+    {
+        $this->City = $City;
 
         return $this;
     }

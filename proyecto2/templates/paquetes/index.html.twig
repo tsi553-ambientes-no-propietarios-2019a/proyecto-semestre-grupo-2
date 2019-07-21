@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paquetes index{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Paquetes</h1>
+    <br>
+        <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nº</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Número de días</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paquete in paquetes %}
+            <tr>
+                <th scope="row">{{ paquete.id }}</td>
+                <td>{{ paquete.name }}</td>
+                <td>{{ paquete.noDays }}</td>
+                <td>{{ paquete.description }}</td>
+                <td>
+                    <a href="{{ path('paquetes_show', {'id': paquete.id}) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-secondary">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('paquetes_new') }}"class="btn btn-primary">Nuevo Elemento</a>
+    </div> 
+{% endblock %}
