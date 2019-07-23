@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% block stylesheets %} 
+{% block stylesheets %}
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 {% endblock %}
-</br>
-</br>
+
 {% block fos_user_content %}
+</br>
+</br>
     <div class="d-flex justify-content-center h-100">
 		<div class="card3">
 			<div class="card-header">
@@ -19,7 +20,7 @@
                     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
                 {% endif %}
 				</div>
-			
+
 			<div class="card-footer">
                 <center>
 				    <a href="http://localhost:8000" class="btn login_btn"/>Aceptar</a>
@@ -29,4 +30,3 @@
 		</div>
 </div>
 {% endblock fos_user_content %}
-
