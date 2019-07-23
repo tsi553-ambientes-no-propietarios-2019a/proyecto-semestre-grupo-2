@@ -1,8 +1,57 @@
 {% trans_default_domain 'FOSUserBundle' %}
+</br>
+</br>
+<div class="d-flex justify-content-center h-100">
+		<div class="card2">
+			<div class="card-header">
+            </br>
+				<h3>Nuevo Usuario</h3>
+			</div>
+			<div class="card-body">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-    </div>
-{{ form_end(form) }}
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+						    {{ form_widget(form.username,{ 'attr': {'placeholder': 'username', 'class': 'form-control' } }) }}
+					</div>
+
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
+						</div>
+                            {{ form_widget(form.email,{ 'attr': {'placeholder': 'e-mail', 'class': 'form-control' } }) }}
+                    </div>
+
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+                            {{ form_widget(form.plainPassword.first,{ 'attr': {'placeholder': 'Ingrese su contraseña', 'class': 'form-control' } }) }}
+                    </div>
+
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-unlock"></i></i></span>
+						</div>
+                            {{ form_widget(form.plainPassword.second,{ 'attr': {'placeholder': 'Repita su contraseña', 'class': 'form-control' } }) }}
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn float-right login_btn"/> <a class=" float-right" href="http://localhost:8000/login/">Atrás &nbsp; &nbsp; &nbsp;</a>
+					</div>
+                    
+                {{ form_end(form) }}
+
+			</div>
+
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					
+				</div>
+			</div>
+		</div>
+</div>
+

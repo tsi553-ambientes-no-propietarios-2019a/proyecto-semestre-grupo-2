@@ -2,46 +2,101 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Bienvenido!{% endblock %}</title>
-   
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+        <title>
+        {% block title %}
+        Inicar Sesion
+        {% endblock %}
+        </title>
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+
+        <!-- Bootstrap CSS File -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}""
+
+        <!--Fontawesome CDN-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <!-- Libraries CSS Files -->
+        <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">				
+        <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">							
+        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">	
+      
+        <!-- Main Stylesheet File -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
         {% block stylesheets %} 
         
         {% endblock %}
-    </head>
-    <body>
-        <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <img class="img-fluid d-block mx-auto img" src="https://scontent.fuio6-1.fna.fbcdn.net/v/t1.0-9/62173011_2280650658917439_1935039043528032256_n.jpg?_nc_cat=109&_nc_eui2=AeEm2ZBBl1Oine3-A3Pe7JCxgs0TbGfj5wKUDBEoX6uQmIvz8LCe30fzWHLpnD-qkuCTaWrJP9QIXqMZthkya33r_bBuCM144pSIkVPBKG5SmA&_nc_oc=AQkSBoqPrJQ6F3PpzxFws4g2PaKLLGtKbNO9fBlx9QPkJm7miSUeprpFP5DlXi79nY8&_nc_ht=scontent.fuio6-1.fna&oh=0055a24ff585fa3b1a357f57431861ed&oe=5D7A8B22">
-      <a class="navbar-brand" href="../">&nbsp;&nbsp;Transportes Ecuador</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="http://localhost:8000">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/hotel/">Hotel</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/habitaciones/">Habitaciones</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/paquetes/">Paquetes</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+</head>
+<body>
+<header id="header">
+		<div class="header-top">
+					
+				<div class="container main-menu">
+					<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="http://localhost:8000">Ecutrip</a>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li><a href="http://localhost:8000">Inicio</a></li>
+				          <li><a href="http://localhost:8000/lugares/">Destinos</a></li>
+				          <li><a href="http://localhost:8000/hotel/"">Hoteles</a></li>
+				          <li><a href="http://localhost:8000/paquetes/">Paquetes</a></li>          					          		          
+				          <li>
+                  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </p>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            |  {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                  {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                  {% endif %}
+                  </li>
+				        </ul>
+				      </nav>
+              <!-- #nav-menu-container -->					      		  
+					</div>
+				</div>
+</header>
+<!-- #header -->       
 
-        <br>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<div class="container">
+  {% block fos_user_content %}
+  {% endblock fos_user_content %}
+</div>
+
+{% block body %}
+  {% block section %}
+
+  {% endblock section %}
+
+{% endblock body %}
+
+
+
+ <!-- JavaScript Libraries -->
+      <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+			<script src="{{ asset('js/popper.min.js') }}"></script>
+			<script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>			
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+ 			<script src="{{ asset('js/jquery-ui.js') }}"></script>					
+  		<script src="{{ asset('js/easing.min.js') }}"></script>			
+			<script src="{{ asset('js/hoverIntent.js') }}"></script>
+			<script src="{{ asset('js/superfish.min.js') }}"></script>	
+			<script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
+			<script src="{{ asset('js/jquery.magnific-popup.min.js') }} "></script>						
+			<script src="{{ asset('js/jquery.nice-select.min.js') }} "></script>					
+			<script src="{{ asset('js/owl.carousel.min.js') }} "></script>							
+			<script src="{{ asset('js/mail-script.js') }} "></script>	
+			<script src="{{ asset('js/main.js') }} "></script>	
+{% block javascripts %}
+
+{% endblock %}
+</body>
 </html>

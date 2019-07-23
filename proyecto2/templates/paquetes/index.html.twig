@@ -1,9 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paquetes index{% endblock %}
+{% block title %}Paquetes{% endblock %}
 
 {% block body %}
-    <div class="container">
+  {% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Paquetes				
+							</h1>	
+						</div>	
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->	
+{% endblock section %}
+</br>
+<div class="container">
     <h1>Paquetes</h1>
     <br>
         <table class="table">

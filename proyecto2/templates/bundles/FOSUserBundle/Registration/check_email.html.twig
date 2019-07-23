@@ -1,6 +1,9 @@
-{% extends "@FOSUser/layout.html.twig" %}
-
+{% extends 'base.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %} 
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block fos_user_content %}
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
