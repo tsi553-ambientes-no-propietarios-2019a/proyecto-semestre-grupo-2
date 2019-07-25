@@ -49,11 +49,21 @@ class City
      */
     private $Hotels;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Bus", mappedBy="City")
+     */
+    private $Buses;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bus", mappedBy="City")
+     */
     public function __construct()
     {
         $this->Places = new ArrayCollection();
         $this->Terminals = new ArrayCollection();
         $this->Hotels = new ArrayCollection();
+        $this->buses = new ArrayCollection();
+        $this->Buses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,6 +195,34 @@ class City
             if ($hotel->getCity() === $this) {
                 $hotel->setCity(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bus[]
+     */
+    public function getBuses(): Collection
+    {
+        return $this->Buses;
+    }
+
+    public function addBus(Bus $bus): self
+    {
+        if (!$this->Buses->contains($bus)) {
+            $this->Buses[] = $bus;
+            $bus->addCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBus(Bus $bus): self
+    {
+        if ($this->Buses->contains($bus)) {
+            $this->Buses->removeElement($bus);
+            $bus->removeCity($this);
         }
 
         return $this;

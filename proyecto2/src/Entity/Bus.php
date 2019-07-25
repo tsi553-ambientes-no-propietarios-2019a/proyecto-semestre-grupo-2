@@ -44,20 +44,25 @@ class Bus
     private $BusType;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Places", inversedBy="AffCompany")
-     */
-    private $Places;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\AffCompany", inversedBy="Buses")
      * @ORM\JoinColumn(nullable=false)
      */
     private $AffCompany;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\City", inversedBy="Buses")
+     */
+    private $City;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="buses")
+     */
+
     public function __construct()
     {
         $this->idbus = new ArrayCollection();
         $this->Places = new ArrayCollection();
+        $this->City = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -144,32 +149,6 @@ class Bus
         return $this;
     }
 
-    /**
-     * @return Collection|Places[]
-     */
-    public function getPlaces(): Collection
-    {
-        return $this->Places;
-    }
-
-    public function addPlace(Places $place): self
-    {
-        if (!$this->Places->contains($place)) {
-            $this->Places[] = $place;
-        }
-
-        return $this;
-    }
-
-    public function removePlace(Places $place): self
-    {
-        if ($this->Places->contains($place)) {
-            $this->Places->removeElement($place);
-        }
-
-        return $this;
-    }
-
     public function getAffCompany(): ?AffCompany
     {
         return $this->AffCompany;
@@ -178,6 +157,32 @@ class Bus
     public function setAffCompany(?AffCompany $AffCompany): self
     {
         $this->AffCompany = $AffCompany;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|City[]
+     */
+    public function getCity(): Collection
+    {
+        return $this->City;
+    }
+
+    public function addCity(City $city): self
+    {
+        if (!$this->City->contains($city)) {
+            $this->City[] = $city;
+        }
+
+        return $this;
+    }
+
+    public function removeCity(City $city): self
+    {
+        if ($this->City->contains($city)) {
+            $this->City->removeElement($city);
+        }
 
         return $this;
     }

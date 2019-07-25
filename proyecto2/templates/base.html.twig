@@ -78,7 +78,14 @@
 
 {% endblock body %}
 
-
+{% block footer %}
+  <footer class="footer-area section-gap">
+    <div class="container">
+      <p class=" text-center text-white">Copyright &copy;Ambientes No Propietarios 2019A</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+{% endblock footer %}
 
  <!-- JavaScript Libraries -->
       <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
@@ -95,6 +102,9 @@
 			<script src="{{ asset('js/owl.carousel.min.js') }} "></script>							
 			<script src="{{ asset('js/mail-script.js') }} "></script>	
 			<script src="{{ asset('js/main.js') }} "></script>	
+       <!-- Footer -->
+
+       
 {% block javascripts %}
 
 {% endblock %}
