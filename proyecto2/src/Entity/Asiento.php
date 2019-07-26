@@ -39,6 +39,11 @@ class Asiento
      */
     private $idcompra;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $DispAsiento;
+
     public function __construct()
     {
         $this->idcompra = new ArrayCollection();
@@ -109,6 +114,18 @@ class Asiento
             $this->idcompra->removeElement($idcompra);
             $idcompra->removeAsiento($this);
         }
+
+        return $this;
+    }
+
+    public function getDispAsiento(): ?string
+    {
+        return $this->DispAsiento;
+    }
+
+    public function setDispAsiento(string $DispAsiento): self
+    {
+        $this->DispAsiento = $DispAsiento;
 
         return $this;
     }

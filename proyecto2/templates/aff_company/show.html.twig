@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AffCompany{% endblock %}
+
+{% block body %}
+    <h1>AffCompany</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ aff_company.id }}</td>
+            </tr>
+            <tr>
+                <th>NameCompany</th>
+                <td>{{ aff_company.NameCompany }}</td>
+            </tr>
+            <tr>
+                <th>EmailCompany</th>
+                <td>{{ aff_company.EmailCompany }}</td>
+            </tr>
+            <tr>
+                <th>CompanyPhone</th>
+                <td>{{ aff_company.CompanyPhone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('aff_company_index') }}">back to list</a>
+
+    <a href="{{ path('aff_company_edit', {'id': aff_company.id}) }}">edit</a>
+
+    {{ include('aff_company/_delete_form.html.twig') }}
+{% endblock %}
