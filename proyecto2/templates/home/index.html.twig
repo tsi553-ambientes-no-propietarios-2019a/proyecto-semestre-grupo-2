@@ -46,30 +46,15 @@ Inicio
 							<div class="tab-content" id="myTabContent">
 
 							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="salidas-tab">
-								{{ include('home/head.html.twig') }}
+								{{ include('home/search_bus.html.twig') }}
 							  </div>
 
 							  <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hoteles-tab">
-								<form class="form-wrap">
-									<input type="text" class="form-control" name="name" placeholder="Destino" onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">
-									<input type="text" class="form-control date-picker" name="start" placeholder="Check-In" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
-									<input type="text" class="form-control date-picker" name="return" placeholder="Check-out" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
-									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Adultos " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
-									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Niños" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">
-									<a href="#" class="primary-btn text-uppercase">Buscar Hoteles</a>
-								</form>
+								{{ include('home/search_hotel.html.twig') }}
 							  </div>
 
 							  <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="paquetes-tab">
-								<form class="form-wrap">
-									<input type="text" class="form-control" name="name" placeholder="From " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '">
-									<input type="text" class="form-control" name="to" placeholder="To " onfocus="this.placeholder = ''" onblur="this.placeholder = 'To '">
-									<input type="text" class="form-control date-picker" name="start" placeholder="Start " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start '">
-									<input type="text" class="form-control date-picker" name="return" placeholder="Return " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Return '">
-									<input type="number" min="1" max="20" class="form-control" name="adults" placeholder="Adults " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adults '">
-									<input type="number" min="1" max="20" class="form-control" name="child" placeholder="Child " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Child '">
-									<a href="#" class="primary-btn text-uppercase">Buscar Paquetes</a>
-								</form>
+								{{ include('home/search_paquete.html.twig') }}
 							  </div>
 
 							</div>

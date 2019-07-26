@@ -1,0 +1,8 @@
+{{form_start(form2, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-wrap'}})}}
+{{form_widget(form2.Destino,{ 'attr': {'placeholder': 'Destino', 'class': 'form-control','onfocus':"this.placeholder = ''",'onblur':"this.placeholder = 'Destino'" }}) }}
+{{form_widget(form2.ChIn,{ 'attr': {'placeholder': 'Check In', 'class': 'form-control date-picker','onfocus':"this.placeholder = ''",'onblur':"this.placeholder = 'Check In'" }}) }}
+{{form_widget(form2.ChOut,{ 'attr': {'placeholder': 'Check Out', 'class': 'form-control date-picker','onfocus':"this.placeholder = ''",'onblur':"this.placeholder = 'Check Out'" }}) }}
+{{form_widget(form2.Adultos,{ 'attr': {'placeholder': 'Adultos', 'class': 'form-control','onfocus':"this.placeholder = ''",'onblur':"this.placeholder = 'Adultos'" }}) }}
+{{form_widget(form2.Ninos,{ 'attr': {'placeholder': 'Ninos', 'class': 'form-control','onfocus':"this.placeholder = ''",'onblur':"this.placeholder = 'Ninos'" }}) }}
+{{form_widget(form2.Buscar,{ 'attr': {'class': 'primary-btn text-uppercase' }}) }}
+{{form_end(form2)}}
