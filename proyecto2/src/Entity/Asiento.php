@@ -33,12 +33,6 @@ class Asiento
      * @ORM\JoinColumn(nullable=false)
      */
     private $bus;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Compra", mappedBy="asiento")
-     */
-    private $idcompra;
-
     /**
      * @ORM\Column(type="string", length=50)
      */
@@ -86,34 +80,6 @@ class Asiento
     public function setBus(?Bus $bus): self
     {
         $this->bus = $bus;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Compra[]
-     */
-    public function getIdcompra(): Collection
-    {
-        return $this->idcompra;
-    }
-
-    public function addIdcompra(Compra $idcompra): self
-    {
-        if (!$this->idcompra->contains($idcompra)) {
-            $this->idcompra[] = $idcompra;
-            $idcompra->addAsiento($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdcompra(Compra $idcompra): self
-    {
-        if ($this->idcompra->contains($idcompra)) {
-            $this->idcompra->removeElement($idcompra);
-            $idcompra->removeAsiento($this);
-        }
 
         return $this;
     }

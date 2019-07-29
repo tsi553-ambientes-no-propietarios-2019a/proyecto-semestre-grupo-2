@@ -81,6 +81,7 @@
 
       </div>
     </section><!-- #services -->
+{% if is_granted("ROLE_ADMIN") %}
 <div class="container">
     <h1>Hoteles</h1>
     <br>
@@ -122,7 +123,7 @@
         </tbody>
     </table>
 
-    {% if is_granted("ROLE_ADMIN") %}
+    
     <a href="{{ path('hotel_new') }}" class="btn btn-primary">Nuevo Elemento</a>
      {% endif %}
     </div>

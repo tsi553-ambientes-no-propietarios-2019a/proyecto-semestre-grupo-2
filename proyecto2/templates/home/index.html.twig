@@ -20,7 +20,7 @@ Inicio
                         
 							<h1 class="text-white">Colecciona Momentos</h1>
 							<h6 class="text-white">
-								Sueña sin miedo, vive sin límites, viaja sin fronteras
+								Sueña sin miedo, vive sin límites, viaja sin fronteras 
 							</h6>
               </br>
               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") == false %}
@@ -65,15 +65,17 @@ Inicio
 <!-- End banner Area -->
 
 {% block content %}
+{{ include('home/search_results.html.twig') }}
 {% endblock content %}
  {% endblock section %}
+
 <!-- Start destinations Area -->
 			<section class="destinations-area section-gap">
 				<div class="container">
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-40 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Destinos Populares</h1>
+		                        <h1 class="mb-10">Destinos Populares </h1>
 		                    </div>
 		                </div>
 		            </div>
@@ -86,7 +88,7 @@ Inicio
 								<div class="details">
 									<h4>Holiday Sea beach Blue Ocean</h4>
 									<p>
-										United staes of America
+										United states of America
 									</p>
 									<ul class="package-list">
 										<li class="d-flex justify-content-between align-items-center">

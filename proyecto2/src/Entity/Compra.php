@@ -63,12 +63,6 @@ class Compra
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Asiento", inversedBy="idcompra")
-     */
-    private $asiento;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Paquetes")
      */
@@ -197,31 +191,7 @@ class Compra
         return $this;
     }
 
-    /**
-     * @return Collection|Asiento[]
-     */
-    public function getAsiento(): Collection
-    {
-        return $this->asiento;
-    }
-
-    public function addAsiento(Asiento $asiento): self
-    {
-        if (!$this->asiento->contains($asiento)) {
-            $this->asiento[] = $asiento;
-        }
-
-        return $this;
-    }
-
-    public function removeAsiento(Asiento $asiento): self
-    {
-        if ($this->asiento->contains($asiento)) {
-            $this->asiento->removeElement($asiento);
-        }
-
-        return $this;
-    }
+    
 
     public function getPaquete(): ?Paquetes
     {

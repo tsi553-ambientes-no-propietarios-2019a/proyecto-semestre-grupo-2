@@ -50,9 +50,9 @@ class Bus
     private $AffCompany;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\City", inversedBy="Buses")
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="Bus")
      */
-    private $City;
+    private $schedules;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="buses")
@@ -63,6 +63,8 @@ class Bus
         $this->idbus = new ArrayCollection();
         $this->Places = new ArrayCollection();
         $this->City = new ArrayCollection();
+        $this->busCities = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,28 +164,34 @@ class Bus
     }
 
     /**
-     * @return Collection|City[]
+     * @return Collection|Schedule[]
      */
-    public function getCity(): Collection
+    public function getSchedules(): Collection
     {
-        return $this->City;
+        return $this->schedules;
     }
 
-    public function addCity(City $city): self
+    public function addSchedule(Schedule $schedule): self
     {
-        if (!$this->City->contains($city)) {
-            $this->City[] = $city;
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules[] = $schedule;
+            $schedule->setBus($this);
         }
 
         return $this;
     }
 
-    public function removeCity(City $city): self
+    public function removeSchedule(Schedule $schedule): self
     {
-        if ($this->City->contains($city)) {
-            $this->City->removeElement($city);
+        if ($this->schedules->contains($schedule)) {
+            $this->schedules->removeElement($schedule);
+            // set the owning side to null (unless already changed)
+            if ($schedule->getBus() === $this) {
+                $schedule->setBus(null);
+            }
         }
 
         return $this;
     }
+
 }

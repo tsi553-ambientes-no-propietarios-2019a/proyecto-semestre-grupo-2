@@ -50,13 +50,15 @@ class City
     private $Hotels;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Bus", mappedBy="City")
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="origin_city")
      */
-    private $Buses;
+    private $schedules_origin;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Bus", mappedBy="City")
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="destiny_city")
      */
+    private $schedules_destiny;
+
     public function __construct()
     {
         $this->Places = new ArrayCollection();
@@ -64,6 +66,8 @@ class City
         $this->Hotels = new ArrayCollection();
         $this->buses = new ArrayCollection();
         $this->Buses = new ArrayCollection();
+        $this->busCities = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,30 +205,34 @@ class City
     }
 
     /**
-     * @return Collection|Bus[]
+     * @return Collection|Schedule[]
      */
-    public function getBuses(): Collection
+    public function getSchedules(): Collection
     {
-        return $this->Buses;
+        return $this->schedules;
     }
 
-    public function addBus(Bus $bus): self
+    public function addSchedule(Schedule $schedule): self
     {
-        if (!$this->Buses->contains($bus)) {
-            $this->Buses[] = $bus;
-            $bus->addCity($this);
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules[] = $schedule;
+            $schedule->setOriginCity($this);
         }
 
         return $this;
     }
 
-    public function removeBus(Bus $bus): self
+    public function removeSchedule(Schedule $schedule): self
     {
-        if ($this->Buses->contains($bus)) {
-            $this->Buses->removeElement($bus);
-            $bus->removeCity($this);
+        if ($this->schedules->contains($schedule)) {
+            $this->schedules->removeElement($schedule);
+            // set the owning side to null (unless already changed)
+            if ($schedule->getOriginCity() === $this) {
+                $schedule->setOriginCity(null);
+            }
         }
 
         return $this;
     }
+
 }
