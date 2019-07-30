@@ -9,7 +9,7 @@
         </title>
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 
         <!-- Bootstrap CSS File -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}""
@@ -21,22 +21,22 @@
         <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">				
-        <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">							
+        <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">	
-      
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
+
         <!-- Main Stylesheet File -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-        {% block stylesheets %} 
-        
+        {% block stylesheets %}
+
         {% endblock %}
 </head>
 <body>
 <header id="header">
 		<div class="header-top">
-					
+
 				<div class="container main-menu">
 					<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
@@ -47,9 +47,9 @@
 				          <li><a href="http://localhost:8000">Inicio</a></li>
                   <!--
 				          <li><a href="http://localhost:8000/lugares/">Destinos</a></li>
-                  --> 
+                  -->
 				          <li><a href="http://localhost:8000/hotel/"">Hoteles</a></li>
-				          <li><a href="http://localhost:8000/paquetes/">Paquetes</a></li>          					          		          
+				          <li><a href="http://localhost:8000/paquetes/">Paquetes</a></li>
 				          <li>
                   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </p>
@@ -62,11 +62,11 @@
                   </li>
 				        </ul>
 				      </nav>
-              <!-- #nav-menu-container -->					      		  
+              <!-- #nav-menu-container -->
 					</div>
 				</div>
 </header>
-<!-- #header -->       
+<!-- #header -->
 
 <div class="container">
   {% block fos_user_content %}
@@ -74,6 +74,7 @@
 </div>
 
 {% block body %}
+
   {% block section %}
 
   {% endblock section %}
@@ -92,21 +93,21 @@
  <!-- JavaScript Libraries -->
       <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
 			<script src="{{ asset('js/popper.min.js') }}"></script>
-			<script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>			
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
- 			<script src="{{ asset('js/jquery-ui.js') }}"></script>					
-  		<script src="{{ asset('js/easing.min.js') }}"></script>			
+			<script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+ 			<script src="{{ asset('js/jquery-ui.js') }}"></script>
+  		<script src="{{ asset('js/easing.min.js') }}"></script>
 			<script src="{{ asset('js/hoverIntent.js') }}"></script>
-			<script src="{{ asset('js/superfish.min.js') }}"></script>	
+			<script src="{{ asset('js/superfish.min.js') }}"></script>
 			<script src="{{ asset('js/jquery.ajaxchimp.min.js') }}"></script>
-			<script src="{{ asset('js/jquery.magnific-popup.min.js') }} "></script>						
-			<script src="{{ asset('js/jquery.nice-select.min.js') }} "></script>					
-			<script src="{{ asset('js/owl.carousel.min.js') }} "></script>							
-			<script src="{{ asset('js/mail-script.js') }} "></script>	
-			<script src="{{ asset('js/main.js') }} "></script>	
+			<script src="{{ asset('js/jquery.magnific-popup.min.js') }} "></script>
+			<script src="{{ asset('js/jquery.nice-select.min.js') }} "></script>
+			<script src="{{ asset('js/owl.carousel.min.js') }} "></script>
+			<script src="{{ asset('js/mail-script.js') }} "></script>
+			<script src="{{ asset('js/main.js') }} "></script>
        <!-- Footer -->
 
-       
+
 {% block javascripts %}
 
 {% endblock %}
