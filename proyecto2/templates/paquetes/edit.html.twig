@@ -1,13 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Paquetes{% endblock %}
+{% block title %}Editar Paquetes{% endblock %}
 
 {% block body %}
-    <h1>Edit Paquetes</h1>
-
-    {{ include('paquetes/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('paquetes_index') }}">back to list</a>
-
-    {{ include('paquetes/_delete_form.html.twig') }}
+{% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Paquetes
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+{% endblock section %}
+</br>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+		<div class="menu-content pb-40 col-lg-8">
+		    <div class="title text-center">
+		        <h1 class="mb-10">Paquetes</h1>
+		    </div>
+		</div>
+	</div>
+</div>
+<div class="container">
+    {{ include('paquetes/_form.html.twig', {'button_label': 'Actualizar'}) }}
+	{% block delete %}
+	{{ include('paquetes/_delete_form.html.twig') }}
+	{% endblock %}
+</div>
 {% endblock %}

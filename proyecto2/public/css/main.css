@@ -4531,3 +4531,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   
   height: 40px;
 }
+
+.delete{
+  display: none;
+}

@@ -3,10 +3,36 @@
 {% block title %}Paquetes{% endblock %}
 
 {% block body %}
- <div class="container">
-    <h1>Paquetes</h1>
-    <br>
-        <table class="table table-striped">
+{% block section %}
+    <!-- start banner Area -->
+<section class="about-banner relative">
+	<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">
+						Paquetes
+					</h1>
+				</div>
+			</div>
+		</div>
+    </div>
+</section>
+			<!-- End banner Area -->
+{% endblock section %}
+</br>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+		<div class="menu-content pb-40 col-lg-8">
+		    <div class="title text-center">
+		        <h1 class="mb-10">Paquetes</h1>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+    <table class="table">
         <tbody>
             <tr>
                 <th>Nº</th>
@@ -17,29 +43,35 @@
                 <td>{{ paquete.name }}</td>
             </tr>
             <tr>
-                <th>Número de dias</th>
-                <td>{{ paquete.noDays }}</td>
+                <th>Fecha</th>
+                <td>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Descripcion</th>
+                <th>Duración</th>
+                <td>{{ paquete.duration }}</td>
+            </tr>
+            <tr>
+                <th>Extras</th>
+                <td>{{ paquete.extras }}</td>
+            </tr>
+            <tr>
+                <th>Descriptión</th>
                 <td>{{ paquete.description }}</td>
             </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ paquete.price }}</td>
+            </tr>
+            
         </tbody>
     </table>
-    <center>
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <a href="{{ path('paquetes_index') }}" class="btn btn-success">Regresar</a>
-            </div>
-            <div class="col-sm-4">
-                 <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-secondary">Editar</a>
-            </div>
-            <div class="col-sm-4">
-                {{ include('paquetes/_delete_form.html.twig') }}
-            </div>
+            <a href="{{ path('paquetes_index') }}" class="btn btn-secondary">Regresar</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-dark">Editar</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ include('paquetes/_delete_form.html.twig') }}
         </div>
     </div>
-    </center>  
+    </br>
 </div>
 {% endblock %}

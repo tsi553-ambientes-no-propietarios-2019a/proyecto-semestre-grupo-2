@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Form;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Paquetes;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,8 +13,11 @@ class PaquetesType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('no_days')
+            ->add('duration')
+            ->add('date')
+            ->add('extras')
             ->add('description')
+            ->add('price') 
         ;
     }
 

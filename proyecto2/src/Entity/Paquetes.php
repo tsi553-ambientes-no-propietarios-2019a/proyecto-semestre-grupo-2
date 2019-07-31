@@ -24,19 +24,29 @@ class Paquetes
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $no_days;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Places", inversedBy="Paquetes")
+     * @ORM\Column(type="string", length=255)
      */
-    private $Places;
+    private $extras;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $duration;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     public function __construct()
     {
@@ -60,18 +70,6 @@ class Paquetes
         return $this;
     }
 
-    public function getNoDays(): ?int
-    {
-        return $this->no_days;
-    }
-
-    public function setNoDays(int $no_days): self
-    {
-        $this->no_days = $no_days;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -90,28 +88,50 @@ class Paquetes
         // return $this->id;
     }
 
-    /**
-     * @return Collection|Places[]
-     */
-    public function getPlaces(): Collection
+    public function getExtras(): ?string
     {
-        return $this->Places;
+        return $this->extras;
     }
 
-    public function addPlace(Places $place): self
+    public function setExtras(string $extras): self
     {
-        if (!$this->Places->contains($place)) {
-            $this->Places[] = $place;
-        }
+        $this->extras = $extras;
 
         return $this;
     }
 
-    public function removePlace(Places $place): self
+    public function getPrice()
     {
-        if ($this->Places->contains($place)) {
-            $this->Places->removeElement($place);
-        }
+        return $this->price;
+    }
+
+    public function setPrice($price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getDuration(): ?string
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(string $duration): self
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
