@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paquetes{% endblock %}
+{% block title %}Paquetes de viaje{% endblock %}
 
 {% block body %}
   {% block section %}
@@ -20,6 +20,8 @@
 			<!-- End banner Area -->	
 {% endblock section %}
 </br>
+
+
 <!--==========================
       Services Section
     ============================-->
@@ -28,21 +30,75 @@
 
         <header class="section-header">
           <h3>Services</h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+          <p>Elige el combo que mas se adapte a tu viaje: negocios, en pareja, con amigos</p>
         </header>
-
+ <!--==========================
+      Imagenes Section
+    ============================-->
         <div class="row">
-
           <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
             <div class="box">
               <div class="icon" style="background: #fceef3;"><i class="fas fa-hotel" style="color: #ff689b;"></i></div>
+            
+              <div class="thumb">
+									<img src="img/packages/d1.jpg" alt="">
+								</div>
+              
+
               <h4 class="title"><a href="">Lorem Ipsum</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
             </div>
           </div>
+
+
+
+        <div class="row">
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									
+                  <img src="{{ asset('logo1.jpg', 'imagenlogo') }}" alt="Symfony!" />
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United states of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
           <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
             <div class="box">
               <div class="icon" style="background: #fff0da;"><i class="fas fa-hotel" style="color: #e98e06;"></i></div>
+              
+              <div class="thumb">
+									<img src="img/packages/d1.jpg" alt="en pareja">
+								</div>
+              
               <h4 class="title"><a href="">Dolor Sitema</a></h4>
               <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
             </div>
