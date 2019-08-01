@@ -6,6 +6,7 @@ use App\Entity\Compra;
 use App\Form\CompraType;
 use App\Repository\CompraRepository;
 use App\Repository\AsientoRepository;
+use App\Repository\ScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -95,28 +96,27 @@ class CompraController extends AbstractController
         return $this->redirectToRoute('compra_index');
     }
      /**
-     * @Route("/compra/asiento/{id}/{bus}", name="compra_asiento", methods={"GET","POST"})
+     * @Route("/asiento/{id}/{bus}/{date}", name="compra_asiento", methods={"GET","POST"})
      */
-    public function newCompra(AsientoRepository $AsientoRepository, $bus,$id)
+    public function newCompra(AsientoRepository $AsientoRepository, $bus,$id, $date)
     {
         $asiento=$AsientoRepository->findByAsiento($bus);
         
         return $this->render('compra/compra_asiento.html.twig', [
             'compra' => $asiento,
-            'schedule'=>$id
+            'schedule'=>$id,
+            'date'=>$date
         ]);
     }
     /**
-     * @Route("/compra/{sche}/{id}", name="compra_realizada", methods={"GET","POST"})
+     * @Route("/compra/details/{sche}/{id}/{date}", name="compra_details", methods={"GET","POST"})
      */
-    public function endCompra(Request $request, AsientoRepository $AsientoRepository, $id)
-    {
-        if ($this->isCsrfTokenValid('delete'.$compra->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($compra);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('compra_index');
+    public function detailsCompra(Request $request, AsientoRepository $AsientoRepository, $id,$sche, ScheduleRepository $ScheduleRepository,$date){
+           
+        return $this->render('compra/asiento_details.html.twig', [
+            'asiento' => $AsientoRepository->findOneBy(['id'=>$id]),
+            'schedule' => $ScheduleRepository->findOneBy(['id'=>$sche]),
+            'date'=>$date
+        ]);
     }
 }

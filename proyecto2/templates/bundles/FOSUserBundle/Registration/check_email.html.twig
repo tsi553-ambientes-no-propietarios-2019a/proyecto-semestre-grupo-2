@@ -6,5 +6,31 @@
 {% endblock %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    </br>
+</br>
+    <div class="d-flex justify-content-center h-100">
+		<div class="card3">
+			<div class="card-header">
+            </br>
+				<h3>Completa el registro</h3>
+			</div>
+			<div class="card-body">
+                <div class="d-flex justify-content-center links2">
+
+                    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+				</div>
+
+			<div class="card-footer">
+                <center>
+				    <a href="http://localhost:8000/login" class="btn login_btn"/>Aceptar</a>
+                 </center>
+			</div>
+            </div>
+		</div>
+</div>
+
+
 {% endblock fos_user_content %}
+{% block footer %}
+
+{% endblock footer %} 

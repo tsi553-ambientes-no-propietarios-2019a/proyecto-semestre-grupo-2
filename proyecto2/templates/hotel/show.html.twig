@@ -3,11 +3,34 @@
 {% block title %}Hotel{% endblock %}
 
 {% block body %}
-
+{% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Hoteles
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+{% endblock section %}
+</br>
     <div class="container">
-        <h1>Hotel</h1>
-        <br>
-        <table class="table table-striped">
+    <div class="row d-flex justify-content-center">
+		<div class="menu-content pb-40 col-lg-8">
+		    <div class="title text-center">
+		        <h1 class="mb-10">Hoteles</h1>
+		    </div>
+		</div>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Nº</th>
@@ -16,6 +39,10 @@
             <tr>
                 <th>Nombre</th>
                 <td>{{ hotel.name }}</td>
+            </tr>
+            <tr>
+                <th>Localización</th>
+                <td>{{ hotel.City.Name }}</td>
             </tr>
             <tr>
                 <th>Telefono</th>
@@ -32,6 +59,18 @@
             <tr>
                 <th>Numero de cuartos</th>
                 <td>{{ hotel.noRooms }}</td>
+            </tr>
+            <tr>
+                <th>Categoría</th>
+                <td>{{ hotel.category }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td><img src="{{ vich_uploader_asset(hotel, 'imageFile') }}" alt="{{ hotel.name }}" height="200"/></td>
+            </tr>
+            <tr>
+                <th>Precio por persona</th>
+                <td>{{ hotel.price }}</td>
             </tr>
         </tbody>
     </table>
@@ -50,6 +89,7 @@
         </div>
     </div>
     </center>
-    
     </div>
+    </br>
 {% endblock %}
+

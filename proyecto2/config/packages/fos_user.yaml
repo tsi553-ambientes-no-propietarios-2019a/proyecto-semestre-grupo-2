@@ -5,4 +5,7 @@ fos_user:
     from_email:
         address: "anto.171961@gmail.com"
         sender_name: "Anthony Tacuri"
+    registration:
+        confirmation:
+            enabled: true
     

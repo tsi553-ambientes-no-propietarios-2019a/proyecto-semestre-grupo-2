@@ -1,4 +1,4 @@
 {% for results in compra %}
-<a href="{{path('compra_show', {'id': results.id}) }}">{{results.num_asiento}}</a>
+<a href="{{path('compra_details', {'sche': schedule,'id': results.id, 'date': date}) }}">{{results.num_asiento}}</a>
 
 {% endfor %}
