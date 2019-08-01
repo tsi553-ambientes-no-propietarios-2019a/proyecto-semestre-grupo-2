@@ -6,6 +6,8 @@ use App\Entity\Paquetes;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Doctrine\ORM\EntityRepository;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PaquetesType extends AbstractType
 {
@@ -17,7 +19,8 @@ class PaquetesType extends AbstractType
             ->add('date')
             ->add('extras')
             ->add('description')
-            ->add('price') 
+            ->add('price')
+            ->add('imageFile', VichImageType:: class)
         ;
     }
 
