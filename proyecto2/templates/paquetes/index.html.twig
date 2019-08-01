@@ -1,124 +1,178 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paquetes{% endblock %}
+{% block title %}Paquetes de viaje{% endblock %}
 
 {% block body %}
-{% block section %}
+  {% block section %}
     <!-- start banner Area -->
 			<section class="about-banner relative">
 				<div class="overlay overlay-bg"></div>
-				<div class="container">
+				<div class="container">				
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Paquetes
-							</h1>
-						</div>
+								Paquetes				
+							</h1>	
+						</div>	
 					</div>
 				</div>
 			</section>
-			<!-- End banner Area -->
+			<!-- End banner Area -->	
 {% endblock section %}
 </br>
+
+
+<!--==========================
+      Services Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Services</h3>
+          <p>Elige el combo que mas se adapte a tu viaje: negocios, en pareja, con amigos</p>
+        </header>
+ <!--==========================
+      Imagenes Section
+    ============================-->
+        <div class="row">
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon" style="background: #fceef3;"><i class="fas fa-hotel" style="color: #ff689b;"></i></div>
+            
+              <div class="thumb">
+									<img src="img/packages/d1.jpg" alt="">
+								</div>
+              
+
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            </div>
+          </div>
+
+
+
+        <div class="row">
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									
+                  <img src="{{ asset('logo1.jpg', 'imagenlogo') }}" alt="Symfony!" />
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United states of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon" style="background: #fff0da;"><i class="fas fa-hotel" style="color: #e98e06;"></i></div>
+              
+              <div class="thumb">
+									<img src="img/packages/d1.jpg" alt="en pareja">
+								</div>
+              
+              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon" style="background: #e6fdfc;"><i class="fas fa-hotel" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon" style="background: #eafde7;"><i class="fas fa-hotel" style="color:#41cf2e;"></i></div>
+              <h4 class="title"><a href="">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon" style="background: #e1eeff;"><i class="fas fa-hotel" style="color: #2282ff;"></i></div>
+              <h4 class="title"><a href="">Nemo Enim</a></h4>
+              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon" style="background: #ecebff;"><i class="fas fa-hotel" style="color: #8660fe;"></i></div>
+              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #services -->
+{% if is_granted("ROLE_ADMIN") %}
 <div class="container">
-    <div class="row d-flex justify-content-center">
-		<div class="menu-content pb-40 col-lg-8">
-		    <div class="title text-center">
-		        <h1 class="mb-10">Paquetes</h1>
-		    </div>
-		</div>
-	</div>
-</div>
-{% if is_granted("ROLE_USER") %}
-<div class="container">
-    <table class="table">
+    <h1>Paquetes</h1>
+    <br>
+        <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Nº</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">Número de días</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Duración</th>
-                <th scope="col">Extras</th>
-                <th scope="col">Fecha</th>
-				<th scope="col">Imagen</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Aciones</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for paquete in paquetes %}
             <tr>
-                <td>{{ paquete.id }}</td>
+                <th scope="row">{{ paquete.id }}</td>
                 <td>{{ paquete.name }}</td>
+                <td>{{ paquete.noDays }}</td>
                 <td>{{ paquete.description }}</td>
-                <td>{{ paquete.duration }}</td>
-                <td>{{ paquete.extras }}</td>
-				<td>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</td>
-				<td><img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.name }}" height="40"/></td>
-                <td>{{ paquete.price }}</td>
                 <td>
-                    <a href="{{ path('paquetes_show', {'id': paquete.id}) }}" class="btn btn-info">Detalles</a>
-                    <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-dark">Editar</a>
+                    <a href="{{ path('paquetes_show', {'id': paquete.id}) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-secondary">Editar</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">No hay paquetes disponibles</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('paquetes_new') }}" class="btn btn-primary">Nuevo Paquete</a>
-</div>
-</div>
-</br>
-{% else %}
-<!-- Start destinations Area -->
-<section class="destinations-area section-gap">
-	<div class="container">
-		<div class="row">
-        {% for paquete in paquetes %}
-            <div class="col-lg-4">
-				<div class="single-destinations">
-					<div class="thumb">
-						<img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.name }}"/>
-					</div>
-					<div class="details">
-					<h4>{{ paquete.name }}</h4>
-					<p>
-					{{ paquete.description }}
-					</p>
-					<ul class="package-list">
-						<li class="d-flex justify-content-between align-items-center">
-							<span>Duracion:</span>
-							<span>{{ paquete.duration }}</span>
-						</li>
-						<li class="d-flex justify-content-between align-items-center">
-							<span>Fecha:</span>
-							<span>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</span>
-						</li>
-						<li class="d-flex justify-content-between align-items-center">
-							<span>Extras:</span>
-							<span>{{ paquete.extras }}</span>
-						</li>
-						<li class="d-flex justify-content-between align-items-center">
-							<span>Precio por persona:</span>
-							<a href="https://www.paypal.me/the97prime" class="price-btn">$ {{ paquete.price }}</a>
-						</li>
-					</ul>
-					</div>
-				</div>
-			</div>
-        {% else %}
-            <div class="title text-center">
-		        <h1 class="mb-10">No hay paquetes disponibles</h1>
-		    </div>
-        {% endfor %}
-        </div>
-    </div>
-</section>
-<!-- End destinations Area -->
-{% endif %}
-<br>
+    <a href="{{ path('paquetes_new') }}"class="btn btn-primary">Nuevo Elemento</a>
+    </div> 
+     {% endif %}
 {% endblock %}

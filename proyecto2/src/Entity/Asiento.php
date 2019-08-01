@@ -21,7 +21,7 @@ class Asiento
     /**
      * @ORM\Column(type="integer")
      */
-    private $numAsiento;
+    private $num_asiento;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -56,12 +56,12 @@ class Asiento
 
     public function getNumAsiento(): ?int
     {
-        return $this->numAsiento;
+        return $this->num_asiento;
     }
 
-    public function setNumAsiento(int $numAsiento): self
+    public function setNumAsiento(int $num_asiento): self
     {
-        $this->numAsiento = $numAsiento;
+        $this->num_asiento = $num_asiento;
 
         return $this;
     }
