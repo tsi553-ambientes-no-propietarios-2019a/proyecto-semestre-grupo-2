@@ -27,10 +27,10 @@ class HomeController extends AbstractController
         $form1->handleRequest($request);
         if($form1->isSubmitted()&&$form1->isValid()){
             $data=$form1->getData();
-            $date=date('l',strtotime($data['Salida']));           
-             /*
-            'search_results'=> $BusCityRepository->findBy(['city_id'=>$city['id'],'day'=>$date]),*/
+            $date=date('l',strtotime($data['Salida'])); 
+            $aux=date('l jS \of F Y',strtotime($data['Salida']));          
             return $this->render('home/index.html.twig',[
+            'date'=>$aux,
             'res'=>$ScheduleRepository->findBy(['originCity'=>$data['Origen'], 'day'=>$date, 'destinyCity'=>$data['Destino']]),
             'form1'=>$form1->createView()
             ]);

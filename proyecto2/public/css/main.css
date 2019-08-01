@@ -3182,6 +3182,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 5px 20px;
 }
 
+.bye-vibora{
+  background: #f8b600;
+  color: #222;
+  font-weight: 600;
+  padding: 5px 20px;
+}
+
 .destinations-area .single-destinations:hover {
   box-shadow: 0px 10px 30px 0px rgba(60, 64, 143, 0.2);
 }
@@ -4530,4 +4537,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 .ancho{
   
   height: 40px;
+}
+.collapse-content .fa.fa-heart:hover {
+  color: #f44336 !important;
+}
+.collapse-content .fa.fa-share-alt:hover {
+  color: #0d47a1 !important;
 }

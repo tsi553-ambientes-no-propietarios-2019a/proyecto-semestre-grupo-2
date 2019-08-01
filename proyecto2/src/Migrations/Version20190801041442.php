@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190729182646 extends AbstractMigration
+final class Version20190801041442 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20190729182646 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE bus_city');
+        $this->addSql('ALTER TABLE compra CHANGE schedule_id schedule_id INT DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -30,8 +30,6 @@ final class Version20190729182646 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE bus_city (id INT AUTO_INCREMENT NOT NULL, city_id INT NOT NULL, bus_id INT NOT NULL, day VARCHAR(25) NOT NULL COLLATE utf8mb4_unicode_ci, schedule TIME NOT NULL, INDEX IDX_72567D7E8BAC62AF (city_id), INDEX IDX_72567D7E2546731D (bus_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\' ');
-        $this->addSql('ALTER TABLE bus_city ADD CONSTRAINT FK_72567D7E2546731D FOREIGN KEY (bus_id) REFERENCES bus (id)');
-        $this->addSql('ALTER TABLE bus_city ADD CONSTRAINT FK_72567D7E8BAC62AF FOREIGN KEY (city_id) REFERENCES city (id)');
+        $this->addSql('ALTER TABLE compra CHANGE schedule_id schedule_id INT NOT NULL');
     }
 }

@@ -66,11 +66,8 @@ Inicio
 
 {% block content %}
 {{ include('home/search_results.html.twig') }}
-{% endblock content %}
- {% endblock section %}
-
-<!-- Start destinations Area -->
-			<section class="destinations-area section-gap">
+{% if res is not defined %}
+	<section class="destinations-area section-gap">
 				<div class="container">
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-40 col-lg-8">
@@ -294,6 +291,12 @@ Inicio
 				</div>
 			</section>
 			<!-- End destinations Area -->
+			{% endif %}
+{% endblock content %}
+ {% endblock section %}
+
+<!-- Start destinations Area -->
+		
 
 
 

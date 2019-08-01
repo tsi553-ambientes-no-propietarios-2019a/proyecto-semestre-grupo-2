@@ -24,32 +24,32 @@ class Compra
     private $fecha_com;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $no_asientos;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total_asientos;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $no_habita;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total_paquetes;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $no_paquetes;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total_habita;
 
@@ -65,13 +65,20 @@ class Compra
     private $user;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Paquetes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $paquete;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Habitaciones")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $habitacion;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Schedule", inversedBy="compras")
+     */
+    private $schedule;
 
     public function __construct()
     {
@@ -213,6 +220,18 @@ class Compra
     public function setHabitacion(?Habitaciones $habitacion): self
     {
         $this->habitacion = $habitacion;
+
+        return $this;
+    }
+
+    public function getSchedule(): ?Schedule
+    {
+        return $this->schedule;
+    }
+
+    public function setSchedule(?Schedule $schedule): self
+    {
+        $this->schedule = $schedule;
 
         return $this;
     }

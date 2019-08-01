@@ -28,6 +28,7 @@ class ScheduleType extends AbstractType
                 'class'=>City::class,
                 'choice_label'=> 'name'
             ])
+            ->add('Price')
         ;
     }
 

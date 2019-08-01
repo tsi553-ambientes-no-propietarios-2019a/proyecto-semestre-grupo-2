@@ -26,7 +26,7 @@ class CompraController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="compra_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="compra_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {

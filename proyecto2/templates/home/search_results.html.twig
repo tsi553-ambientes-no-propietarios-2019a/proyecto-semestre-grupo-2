@@ -1,31 +1,43 @@
 {% if res is defined %}
+</br>
+    <div class="container">
     <h1> Resultados</h1>
+    <div class="row">
+    {% for results in res %}
+    <!-- Card -->
+    <div class="card weather-card col-md-4">
+    <!-- Card content -->
+        <div class="card-body pb-3">
+    <!-- Text -->
+            <p class="card-text">{{date}}</p>
+            <div class="d-flex justify-content-between">
+            <i class="far fa-clock fa-5x pt-3 amber-text"></i>
+            <p class="display-3 degree">{{ results.hour ? results.hour|date('H:i') : '' }}</p>
+            </div>
+            <div class="d-flex justify-content-between mb-4">
+            <p><i class="fas fa-map-marker-alt fa-lg text-info pr-2"></i>{{ results.originCity.name }}</p>
+            <p><i class="fas fa-map-marked-alt fa-lg grey-text pr-2"></i>{{ results.destinyCity.name }}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+            <p>{{ results.Bus.BusType }}<br>
+            {{ results.Bus.AffCompany.Terminal.Name }}</p>
+            <i class="fas fa-bus-alt fa-5x pt-3 amber-text"></i>
+           
+            </div>
+            <hr class="">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Ciudad Origen</th>
-                <th>Ciudad Destino</th>
-                <th>Dia</th>
-                <th>Bus</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        {% for results in res %}
-            <tr>
-                <td>{{ results.originCity.name }}</td>
-                <td>{{ results.destinyCity.name }}</td>
-                <td>{{ results.Bus.NumBus }}</td>
-                <td>{{ results.day }}</td>
-                <td>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
+       <a href="{{path('compra_new', {'id': results.id}) }}" class="bye-vibora float-right">${{results.price}}</a>
+
+  </div>
+
+</div>
+
+
+ {% else %}
                 <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+          
+{% endfor %}
+</div>
+</div>
 {% endif %}
+</br>
