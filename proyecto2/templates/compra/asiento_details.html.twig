@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hotel{% endblock %}
+
+{% block body %}
+{% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Detalles
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+{% endblock section %}
+</br>
+    <div class="container">
+    <div class="row d-flex justify-content-center">
+		<div class="menu-content pb-40 col-lg-8">
+		    <div class="title text-center">
+		        <h1 class="mb-10">Detalles</h1>
+		    </div>
+		</div>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Fecha de Compra</th>
+                <td>{{ date }}</td>
+            </tr>
+            <tr>
+                <th>Lugar Origen</th>
+                <td>{{ schedule.originCity}}</td>
+            </tr>
+            <tr>
+                <th>Lugar Destino</th>
+                <td>{{ schedule.destinyCity}}</td>
+            </tr>
+            <tr>
+                <th>Empresa de Transporte</th>
+                <td>{{ asiento.Bus.AffCompany.NameCompany }}</td>
+            </tr>
+            <tr>
+                <th>Numero de Bus</th>
+                <td>{{ asiento.Bus.NumBus }}</td>
+            </tr>
+            <tr>
+                <th>Numero de Asiento</th>
+                <td>{{ asiento.numAsiento }}</td>
+            </tr>
+            <tr>
+                <th>Hora</th>
+                <td>{{ schedule.hour ? schedule.hour|date('H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ schedule.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <center>
+    <div class="container">
+        <div class="row">
+           
+        </div>
+    </div>
+    </center>
+    </div>
+    </br>
+{% endblock %}
+
