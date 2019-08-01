@@ -26,7 +26,7 @@
             </div>
             <hr class="">
 
-       <a href="{{path('compra_new', {'id': results.id}) }}" class="bye-vibora float-right">${{results.price}}</a>
+       <a href="{{path('compra_asiento', {'id': results.id, 'bus': results.Bus.id}) }}" class="bye-vibora float-right">${{results.price}}</a>
 
   </div>
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Compra;
 use App\Form\CompraType;
 use App\Repository\CompraRepository;
+use App\Repository\AsientoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +27,7 @@ class CompraController extends AbstractController
     }
 
     /**
-     * @Route("/new/{id}", name="compra_new", methods={"GET","POST"})
+     * @Route("/new", name="compra_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -84,6 +85,31 @@ class CompraController extends AbstractController
      * @Route("/{id}", name="compra_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Compra $compra): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$compra->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($compra);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('compra_index');
+    }
+     /**
+     * @Route("/compra/asiento/{id}/{bus}", name="compra_asiento", methods={"GET","POST"})
+     */
+    public function newCompra(AsientoRepository $AsientoRepository, $bus,$id)
+    {
+        $asiento=$AsientoRepository->findByAsiento($bus);
+        
+        return $this->render('compra/compra_asiento.html.twig', [
+            'compra' => $asiento,
+            'schedule'=>$id
+        ]);
+    }
+    /**
+     * @Route("/compra/{sche}/{id}", name="compra_realizada", methods={"GET","POST"})
+     */
+    public function endCompra(Request $request, AsientoRepository $AsientoRepository, $id)
     {
         if ($this->isCsrfTokenValid('delete'.$compra->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

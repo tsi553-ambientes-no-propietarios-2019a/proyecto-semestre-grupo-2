@@ -18,7 +18,15 @@ class AsientoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Asiento::class);
     }
-
+    public function findByAsiento($bus_id)
+    {
+        return $this->createQueryBuilder('asiento')
+            ->andWhere('asiento.bus = :bus')
+            ->setParameter('bus', $bus_id)
+            ->getQuery()
+            ->getArrayResult()
+            ;
+    }
     // /**
     //  * @return Asiento[] Returns an array of Asiento objects
     //  */

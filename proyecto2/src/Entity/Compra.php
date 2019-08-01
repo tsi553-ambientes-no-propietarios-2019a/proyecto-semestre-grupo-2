@@ -65,20 +65,26 @@ class Compra
     private $user;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Paquetes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $paquete;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Habitaciones")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $habitacion;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Schedule", inversedBy="compras")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $schedule;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Asiento", inversedBy="compras")
+     */
+    private $asiento;
 
     public function __construct()
     {
@@ -232,6 +238,32 @@ class Compra
     public function setSchedule(?Schedule $schedule): self
     {
         $this->schedule = $schedule;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Asiento[]
+     */
+    public function getAsiento(): Collection
+    {
+        return $this->asiento;
+    }
+
+    public function addAsiento(Asiento $asiento): self
+    {
+        if (!$this->asiento->contains($asiento)) {
+            $this->asiento[] = $asiento;
+        }
+
+        return $this;
+    }
+
+    public function removeAsiento(Asiento $asiento): self
+    {
+        if ($this->asiento->contains($asiento)) {
+            $this->asiento->removeElement($asiento);
+        }
 
         return $this;
     }

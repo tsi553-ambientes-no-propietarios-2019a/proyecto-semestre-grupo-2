@@ -38,9 +38,15 @@ class Asiento
      */
     private $DispAsiento;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Compra", mappedBy="asiento")
+     */
+    private $compras;
+
     public function __construct()
     {
         $this->idcompra = new ArrayCollection();
+        $this->compras = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,34 @@ class Asiento
     public function setDispAsiento(string $DispAsiento): self
     {
         $this->DispAsiento = $DispAsiento;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Compra[]
+     */
+    public function getCompras(): Collection
+    {
+        return $this->compras;
+    }
+
+    public function addCompra(Compra $compra): self
+    {
+        if (!$this->compras->contains($compra)) {
+            $this->compras[] = $compra;
+            $compra->addAsiento($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompra(Compra $compra): self
+    {
+        if ($this->compras->contains($compra)) {
+            $this->compras->removeElement($compra);
+            $compra->removeAsiento($this);
+        }
 
         return $this;
     }
