@@ -34,11 +34,6 @@ class Places
     private $latitude;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Bus", mappedBy="Places")
-     */
-    private $buses;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Paquetes", mappedBy="Places")
      */
     private $Paquetes;
@@ -92,34 +87,6 @@ class Places
     public function setLatitude(float $latitude): self
     {
         $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Bus[]
-     */
-    public function getBuses(): Collection
-    {
-        return $this->Buses;
-    }
-
-    public function addBuses(Bus $affCompany): self
-    {
-        if (!$this->Buses->contains($affCompany)) {
-            $this->Buses[] = $buses;
-            $buses->addPlace($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBuses(Bus $buses): self
-    {
-        if ($this->Buses->contains($buses)) {
-            $this->Buses->removeElement($buses);
-            $buses->removePlace($this);
-        }
 
         return $this;
     }

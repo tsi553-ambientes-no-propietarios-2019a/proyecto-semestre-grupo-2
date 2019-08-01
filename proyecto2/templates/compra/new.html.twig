@@ -1,8 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'home/index.html.twig' %}
 
 {% block title %}New Compra{% endblock %}
 
 {% block body %}
+{% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Asientos
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+{% endblock section %}
     <h1>Create new Compra</h1>
 
     {{ include('compra/_form.html.twig') }}

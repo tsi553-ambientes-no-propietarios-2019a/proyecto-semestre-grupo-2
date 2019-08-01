@@ -49,11 +49,25 @@ class City
      */
     private $Hotels;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="origin_city")
+     */
+    private $schedules_origin;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="destiny_city")
+     */
+    private $schedules_destiny;
+
     public function __construct()
     {
         $this->Places = new ArrayCollection();
         $this->Terminals = new ArrayCollection();
         $this->Hotels = new ArrayCollection();
+        $this->buses = new ArrayCollection();
+        $this->Buses = new ArrayCollection();
+        $this->busCities = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,4 +203,36 @@ class City
 
         return $this;
     }
+
+    /**
+     * @return Collection|Schedule[]
+     */
+    public function getSchedules(): Collection
+    {
+        return $this->schedules;
+    }
+
+    public function addSchedule(Schedule $schedule): self
+    {
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules[] = $schedule;
+            $schedule->setOriginCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchedule(Schedule $schedule): self
+    {
+        if ($this->schedules->contains($schedule)) {
+            $this->schedules->removeElement($schedule);
+            // set the owning side to null (unless already changed)
+            if ($schedule->getOriginCity() === $this) {
+                $schedule->setOriginCity(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

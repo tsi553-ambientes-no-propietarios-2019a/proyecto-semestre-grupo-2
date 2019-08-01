@@ -23,7 +23,7 @@ class User extends BaseUser
      */
     private $phone;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $birth_date;
 

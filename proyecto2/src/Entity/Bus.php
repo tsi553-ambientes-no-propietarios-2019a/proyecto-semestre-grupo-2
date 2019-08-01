@@ -44,20 +44,27 @@ class Bus
     private $BusType;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Places", inversedBy="AffCompany")
-     */
-    private $Places;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\AffCompany", inversedBy="Buses")
      * @ORM\JoinColumn(nullable=false)
      */
     private $AffCompany;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="Bus")
+     */
+    private $schedules;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="buses")
+     */
+
     public function __construct()
     {
         $this->idbus = new ArrayCollection();
         $this->Places = new ArrayCollection();
+        $this->City = new ArrayCollection();
+        $this->busCities = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -144,32 +151,6 @@ class Bus
         return $this;
     }
 
-    /**
-     * @return Collection|Places[]
-     */
-    public function getPlaces(): Collection
-    {
-        return $this->Places;
-    }
-
-    public function addPlace(Places $place): self
-    {
-        if (!$this->Places->contains($place)) {
-            $this->Places[] = $place;
-        }
-
-        return $this;
-    }
-
-    public function removePlace(Places $place): self
-    {
-        if ($this->Places->contains($place)) {
-            $this->Places->removeElement($place);
-        }
-
-        return $this;
-    }
-
     public function getAffCompany(): ?AffCompany
     {
         return $this->AffCompany;
@@ -181,4 +162,36 @@ class Bus
 
         return $this;
     }
+
+    /**
+     * @return Collection|Schedule[]
+     */
+    public function getSchedules(): Collection
+    {
+        return $this->schedules;
+    }
+
+    public function addSchedule(Schedule $schedule): self
+    {
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules[] = $schedule;
+            $schedule->setBus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchedule(Schedule $schedule): self
+    {
+        if ($this->schedules->contains($schedule)) {
+            $this->schedules->removeElement($schedule);
+            // set the owning side to null (unless already changed)
+            if ($schedule->getBus() === $this) {
+                $schedule->setBus(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

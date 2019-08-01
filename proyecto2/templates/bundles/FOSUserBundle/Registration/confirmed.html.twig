@@ -1,10 +1,32 @@
-{% extends "@FOSUser/layout.html.twig" %}
-
+{% extends 'base.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+</br>
+</br>
+    <div class="d-flex justify-content-center h-100">
+		<div class="card3">
+			<div class="card-header">
+            </br>
+				<h3>{{ 'layout.confirm'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</h3>
+			</div>
+			<div class="card-body">
+                <div class="d-flex justify-content-center links2">
+					<p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                {% if targetUrl %}
+                    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                {% endif %}
+				</div>
+
+			<div class="card-footer">
+                <center>
+				    <a href="http://localhost:8000" class="btn login_btn"/>Aceptar</a>
+                 </center>
+			</div>
+            </div>
+		</div>
+</div>
 {% endblock fos_user_content %}

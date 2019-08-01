@@ -1,0 +1,306 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+{% block section %}
+
+<!-- start banner Area -->
+			<section class="banner-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen align-items-center justify-content-between">
+						<div class="col-lg-6 col-md-6 banner-left">
+                        
+							<h1 class="text-white">Colecciona Momentos</h1>
+							<h6 class="text-white">
+								Sueña sin miedo, vive sin límites, viaja sin fronteras 
+							</h6>
+              </br>
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") == false %}
+							<a href="http://localhost:8000/register/" class="primary-btn text-uppercase">Registrarse</a>
+              {% endif %}
+						</div>
+						<div class="col-lg-4 col-md-6 banner-right">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+
+							  <li class="nav-item">
+							    <a class="nav-link active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="salidas" aria-selected="true">Salidas</a>
+							  </li>
+
+							  <li class="nav-item">
+							    <a class="nav-link" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hoteles" aria-selected="false">Hoteles</a>
+							  </li>
+
+							  <li class="nav-item">
+							    <a class="nav-link" id="holiday-tab" data-toggle="tab" href="#holiday" role="tab" aria-controls="paquetes" aria-selected="false">Paquetes</a>
+							  </li>
+
+							</ul>
+							<div class="tab-content" id="myTabContent">
+
+							  <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="salidas-tab">
+								{{ include('home/search_bus.html.twig') }}
+							  </div>
+
+							  <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hoteles-tab">
+								{{ include('home/search_hotel.html.twig') }}
+							  </div>
+
+							  <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="paquetes-tab">
+								{{ include('home/search_paquete.html.twig') }}
+							  </div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+<!-- End banner Area -->
+
+{% block content %}
+{{ include('home/search_results.html.twig') }}
+{% if res is not defined %}
+	<section class="destinations-area section-gap">
+				<div class="container">
+		            <div class="row d-flex justify-content-center">
+		                <div class="menu-content pb-40 col-lg-8">
+		                    <div class="title text-center">
+		                        <h1 class="mb-10">Destinos Populares </h1>
+		                    </div>
+		                </div>
+		            </div>
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d1.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United states of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d2.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United staes of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d3.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United staes of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d4.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United staes of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d5.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United staes of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-destinations">
+								<div class="thumb">
+									<img src="img/packages/d6.jpg" alt="">
+								</div>
+								<div class="details">
+									<h4>Holiday Sea beach Blue Ocean</h4>
+									<p>
+										United staes of America
+									</p>
+									<ul class="package-list">
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Duration</span>
+											<span>06 days and 7 nights</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Date</span>
+											<span>18.04.2018</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Airport</span>
+											<span>Changi</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Extras</span>
+											<span>All Inclusive</span>
+										</li>
+										<li class="d-flex justify-content-between align-items-center">
+											<span>Price per person</span>
+											<a href="#" class="price-btn">$250</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End destinations Area -->
+			{% endif %}
+{% endblock content %}
+ {% endblock section %}
+
+<!-- Start destinations Area -->
+		
+
+
+
+
+ 
+
+{% endblock %}

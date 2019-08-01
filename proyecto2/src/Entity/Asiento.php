@@ -33,15 +33,20 @@ class Asiento
      * @ORM\JoinColumn(nullable=false)
      */
     private $bus;
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $DispAsiento;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Compra", mappedBy="asiento")
      */
-    private $idcompra;
+    private $compras;
 
     public function __construct()
     {
         $this->idcompra = new ArrayCollection();
+        $this->compras = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,29 +90,41 @@ class Asiento
         return $this;
     }
 
+    public function getDispAsiento(): ?string
+    {
+        return $this->DispAsiento;
+    }
+
+    public function setDispAsiento(string $DispAsiento): self
+    {
+        $this->DispAsiento = $DispAsiento;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Compra[]
      */
-    public function getIdcompra(): Collection
+    public function getCompras(): Collection
     {
-        return $this->idcompra;
+        return $this->compras;
     }
 
-    public function addIdcompra(Compra $idcompra): self
+    public function addCompra(Compra $compra): self
     {
-        if (!$this->idcompra->contains($idcompra)) {
-            $this->idcompra[] = $idcompra;
-            $idcompra->addAsiento($this);
+        if (!$this->compras->contains($compra)) {
+            $this->compras[] = $compra;
+            $compra->addAsiento($this);
         }
 
         return $this;
     }
 
-    public function removeIdcompra(Compra $idcompra): self
+    public function removeCompra(Compra $compra): self
     {
-        if ($this->idcompra->contains($idcompra)) {
-            $this->idcompra->removeElement($idcompra);
-            $idcompra->removeAsiento($this);
+        if ($this->compras->contains($compra)) {
+            $this->compras->removeElement($compra);
+            $compra->removeAsiento($this);
         }
 
         return $this;

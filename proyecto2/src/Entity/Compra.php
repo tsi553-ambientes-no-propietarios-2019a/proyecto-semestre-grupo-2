@@ -24,32 +24,32 @@ class Compra
     private $fecha_com;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $no_asientos;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total_asientos;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $no_habita;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total_paquetes;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $no_paquetes;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total_habita;
 
@@ -63,21 +63,28 @@ class Compra
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Asiento", inversedBy="idcompra")
-     */
-    private $asiento;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Paquetes")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $paquete;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Habitaciones")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $habitacion;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Schedule", inversedBy="compras")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $schedule;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Asiento", inversedBy="compras")
+     */
+    private $asiento;
 
     public function __construct()
     {
@@ -197,6 +204,44 @@ class Compra
         return $this;
     }
 
+    
+
+    public function getPaquete(): ?Paquetes
+    {
+        return $this->paquete;
+    }
+
+    public function setPaquete(?Paquetes $paquete): self
+    {
+        $this->paquete = $paquete;
+
+        return $this;
+    }
+
+    public function getHabitacion(): ?Habitaciones
+    {
+        return $this->habitacion;
+    }
+
+    public function setHabitacion(?Habitaciones $habitacion): self
+    {
+        $this->habitacion = $habitacion;
+
+        return $this;
+    }
+
+    public function getSchedule(): ?Schedule
+    {
+        return $this->schedule;
+    }
+
+    public function setSchedule(?Schedule $schedule): self
+    {
+        $this->schedule = $schedule;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Asiento[]
      */
@@ -219,30 +264,6 @@ class Compra
         if ($this->asiento->contains($asiento)) {
             $this->asiento->removeElement($asiento);
         }
-
-        return $this;
-    }
-
-    public function getPaquete(): ?Paquetes
-    {
-        return $this->paquete;
-    }
-
-    public function setPaquete(?Paquetes $paquete): self
-    {
-        $this->paquete = $paquete;
-
-        return $this;
-    }
-
-    public function getHabitacion(): ?Habitaciones
-    {
-        return $this->habitacion;
-    }
-
-    public function setHabitacion(?Habitaciones $habitacion): self
-    {
-        $this->habitacion = $habitacion;
 
         return $this;
     }
