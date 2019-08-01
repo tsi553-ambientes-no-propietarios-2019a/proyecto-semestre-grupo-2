@@ -69,9 +69,7 @@ class PaquetesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('paquetes_index', [
-                'id' => $paquete->getId(),
-            ]);
+            return $this->redirectToRoute('paquetes_index');
         }
 
         return $this->render('paquetes/edit.html.twig', [

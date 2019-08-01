@@ -4544,3 +4544,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 .collapse-content .fa.fa-share-alt:hover {
   color: #0d47a1 !important;
 }
+.ancho img{
+  height: 400px;
+}
+
+.delete{
+  display: none;
+} 

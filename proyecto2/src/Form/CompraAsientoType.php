@@ -6,6 +6,7 @@ use App\Entity\Compra;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CompraAsientoType extends AbstractType
 {
@@ -13,6 +14,10 @@ class CompraAsientoType extends AbstractType
     {
         $builder
             ->add('fecha_com')
+            ->add('asiento',EntityType::class, [
+                'class'=>Asiento::class,
+                'choice_label'=> 'num_asiento'
+            ])
             ->add('no_asientos')
             ->add('total_asientos')
             ->add('no_habita')
@@ -33,4 +38,5 @@ class CompraAsientoType extends AbstractType
             'data_class' => Compra::class,
         ]);
     }
+    
 }

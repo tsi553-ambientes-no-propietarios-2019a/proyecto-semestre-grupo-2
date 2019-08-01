@@ -3,27 +3,35 @@
 {% block title %}Edit Hotel{% endblock %}
 
 {% block body %}
+{% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Hoteles
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+{% endblock section %}
     <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4">Editar</h1>
-        <hr class="my-4">
+        <div class="row d-flex justify-content-center">
+		<div class="menu-content pb-40 col-lg-8">
+		    <div class="title text-center">
+		        <h1 class="mb-10">Hoteles</h1>
+		    </div>
+		</div>
+    </div>
+</div>
+    <div class="container">
+        {{ include('hotel/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
-        <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                {{ include('hotel/_form.html.twig', {'button_label': 'Actualizar'}) }}
-            </div>
-            <br>
-            <div class="col-sm-12">
-            <br>
-                 <a href="{{ path('hotel_index') }}" class="btn btn-primary">Regresar</a>
-                 <br>
-                 <br>
-                 {{ include('hotel/_delete_form.html.twig') }}
-            </div>
-            </div>
-        </div>
-        </div>
+        {{ include('hotel/_delete_form.html.twig') }}
     </div>
 
     

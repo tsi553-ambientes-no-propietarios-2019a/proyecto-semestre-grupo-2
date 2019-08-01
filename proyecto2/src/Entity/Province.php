@@ -97,4 +97,10 @@ class Province
 
         return $this;
     }
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->Name;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
 }
