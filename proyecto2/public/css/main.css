@@ -4527,9 +4527,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #f8b600;
 }
 
-.ancho{
-  
-  height: 40px;
+.ancho img{
+  height: 400px;
 }
 
 .delete{

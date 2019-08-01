@@ -43,20 +43,24 @@
                 <td>{{ paquete.name }}</td>
             </tr>
             <tr>
-                <th>Fecha</th>
-                <td>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</td>
+                <th>Descriptión</th>
+                <td>{{ paquete.description }}</td>
             </tr>
             <tr>
                 <th>Duración</th>
                 <td>{{ paquete.duration }}</td>
             </tr>
             <tr>
+                <th>Fecha</th>
+                <td>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
                 <th>Extras</th>
                 <td>{{ paquete.extras }}</td>
             </tr>
             <tr>
-                <th>Descriptión</th>
-                <td>{{ paquete.description }}</td>
+                <th>Imagen</th>
+                <td><img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.name }}" height="200"/></td>
             </tr>
             <tr>
                 <th>Precio</th>

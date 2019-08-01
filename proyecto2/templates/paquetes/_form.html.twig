@@ -39,15 +39,15 @@
         {{ form_widget(form.price,{ 'attr': {'placeholder': 'Precio', 'class': 'form-control' } }) }}
 	</div>
   <div class="input-group mb-3">
-  {{ form_widget(form.imageFile.file,{ 'attr': {'class': '' } }) }}
+  {{ form_widget(form.imageFile.file) }}
+  <div class="ancho">
+  {{ form_widget(form.imageFile) }}
   </div>
-  
+  </div>
+ 
     <div class="form-group">
         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
         <a href="{{ path('paquetes_index') }}" class="btn btn-secondary">Regresar</a>
-        {% block delete %}
-
-        {% endblock %}
 	</div> 
 {{ form_end(form) }}
 </div>
