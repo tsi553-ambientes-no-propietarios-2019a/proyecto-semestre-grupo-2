@@ -1,6 +1,65 @@
+<div class="card-body">
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <br>
-    <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
-    <br>
+    
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-hotel"></i></span>
+        </div>
+        {{ form_widget(form.name,{ 'attr': {'placeholder': 'Nombre del Hotel', 'class': 'form-control' } }) }}
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-phone"></i></span>
+        </div>
+        {{ form_widget(form.phone,{ 'attr': {'placeholder': 'Número del hotel', 'class': 'form-control' } }) }}
+        
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-mail-bulk"></i></span>
+        </div>
+        {{ form_widget(form.email,{ 'attr': {'placeholder': 'e-mail', 'class': 'form-control' } }) }}
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-globe"></i></span>
+        </div>
+        {{ form_widget(form.web_site,{ 'attr': {'placeholder': 'Sitio web', 'class': 'form-control' } }) }}
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-backspace"></i></span>
+        </div>
+        {{ form_widget(form.no_rooms,{ 'attr': {'placeholder': 'Número de cuartos', 'class': 'form-control' } }) }}
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-exclamation"></i></span>
+        </div>
+        {{ form_widget(form.category,{ 'attr': {'placeholder': 'Categoría', 'class': 'form-control' } }) }}
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+        </div>
+        {{ form_widget(form.price,{ 'attr': {'placeholder': 'Precio', 'class': 'form-control' } }) }}
+	</div>
+    <div class="input-group form-group">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fas fa-city"></i></span>
+        </div>
+        {{ form_widget(form.City,{ 'attr': {'class': 'form-control' } }) }}
+	</div>
+  <div class="input-group mb-3">
+  {{ form_widget(form.imageFile.file) }}
+  <div class="ancho">
+  {{ form_widget(form.imageFile) }}
+  </div>
+  </div>
+  </br>
+    <div class="form-group">
+        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+        <a href="{{ path('hotel_index') }}" class="btn btn-secondary">Regresar</a>
+	</div> 
 {{ form_end(form) }}
+</div>

@@ -3,18 +3,35 @@
 {% block title %}Nuevo{% endblock %}
 
 {% block body %}
+{% block section %}
+    <!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Hoteles
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+{% endblock section %}
+</br>
     <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">Nuevo Hotel</h1>
-            <hr class="my-4">
-
-            {{ include('hotel/_form.html.twig') }}
-            <br>
-            <a href="{{ path('hotel_index') }}" class="btn btn-primary">Regresar</a>
+    <div class="row d-flex justify-content-center">
+		<div class="menu-content pb-40 col-lg-8">
+		    <div class="title text-center">
+		        <h1 class="mb-10">Hoteles</h1>
+		    </div>
+		</div>
+	</div>
+           {{ include('hotel/_form.html.twig') }}
+            
         </div>
         
     </div>
-    
-
     
 {% endblock %}

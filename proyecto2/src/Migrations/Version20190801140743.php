@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190801010232 extends AbstractMigration
+final class Version20190801140743 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20190801010232 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE hotel (id INT AUTO_INCREMENT NOT NULL, city_id INT NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(255) NOT NULL, email LONGTEXT NOT NULL, web_site LONGTEXT NOT NULL, no_rooms INT NOT NULL, INDEX IDX_3535ED98BAC62AF (city_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE hotel (id INT AUTO_INCREMENT NOT NULL, city_id INT NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(255) NOT NULL, email LONGTEXT NOT NULL, web_site LONGTEXT NOT NULL, no_rooms INT NOT NULL, category INT DEFAULT NULL, price NUMERIC(10, 2) NOT NULL, image_name VARCHAR(255) NOT NULL, image_size INT NOT NULL, updated_at DATETIME NOT NULL, INDEX IDX_3535ED98BAC62AF (city_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE bus (id INT AUTO_INCREMENT NOT NULL, aff_company_id INT NOT NULL, num_bus INT NOT NULL, driver_name VARCHAR(255) DEFAULT NULL, seat_num INT NOT NULL, bus_type VARCHAR(255) NOT NULL, INDEX IDX_2F566B69364780B1 (aff_company_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE schedule (id INT AUTO_INCREMENT NOT NULL, bus_id INT NOT NULL, origin_city_id INT DEFAULT NULL, destiny_city_id INT DEFAULT NULL, day VARCHAR(50) NOT NULL, hour TIME NOT NULL, INDEX IDX_5A3811FB2546731D (bus_id), INDEX IDX_5A3811FB3EDB77C2 (origin_city_id), INDEX IDX_5A3811FB15ECDDA9 (destiny_city_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE city (id INT AUTO_INCREMENT NOT NULL, province_id INT NOT NULL, city_cod INT NOT NULL, name VARCHAR(255) NOT NULL, INDEX IDX_2D5B0234E946114A (province_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
