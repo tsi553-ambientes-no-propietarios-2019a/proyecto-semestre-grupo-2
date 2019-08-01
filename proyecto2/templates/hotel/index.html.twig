@@ -72,13 +72,11 @@
     </table>
     <a href="{{ path('hotel_new') }}" class="btn btn-primary">Nuevo Hotel</a>
 </div>
-
-
 </br>
 {% else %}
 
 
-
+{% endif %}
 
 <div class="container">
 <header class="section-header">
@@ -97,10 +95,7 @@
 					<div class="details">
 					<h4>{{ hotel.name }}</h4>
 					<ul class="package-list">
-            <li class="d-flex justify-content-between align-items-center">
-							<span>Localización:</span>
-							<span>{{ hotel.City.Name }}</span>
-						</li>
+          
 						<li class="d-flex justify-content-between align-items-center">
 							<span>Teléfono:</span>
 							<span>{{ hotel.phone }}</span>
@@ -140,5 +135,4 @@
     </script>
 </div>
 
-{% endif %}
 {% endblock %}
