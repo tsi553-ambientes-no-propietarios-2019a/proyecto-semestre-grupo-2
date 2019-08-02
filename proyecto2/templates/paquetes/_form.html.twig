@@ -4,7 +4,7 @@
 		<div class="input-group-prepend">
 			<span class="input-group-text"><i class="fab fa-product-hunt"></i></span>
         </div>
-        {{ form_widget(form.name,{ 'attr': {'placeholder': 'Nombre del producto', 'class': 'form-control' } }) }}
+        {{ form_widget(form.name,{ 'attr': {'placeholder': 'Nombre del paquete', 'class': 'form-control' } }) }}
 	</div>
     <div class="input-group form-group">
 		<div class="input-group-prepend">
@@ -38,12 +38,16 @@
         </div>
         {{ form_widget(form.price,{ 'attr': {'placeholder': 'Precio', 'class': 'form-control' } }) }}
 	</div>
+  <div class="input-group mb-3">
+  {{ form_widget(form.imageFile.file) }}
+  <div class="ancho">
+  {{ form_widget(form.imageFile) }}
+  </div>
+  </div>
+ 
     <div class="form-group">
         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
         <a href="{{ path('paquetes_index') }}" class="btn btn-secondary">Regresar</a>
-        {% block delete %}
-
-        {% endblock %}
 	</div> 
 {{ form_end(form) }}
 </div>

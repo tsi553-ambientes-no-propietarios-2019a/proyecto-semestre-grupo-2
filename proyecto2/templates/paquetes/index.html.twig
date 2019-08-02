@@ -43,6 +43,7 @@
                 <th scope="col">Duración</th>
                 <th scope="col">Extras</th>
                 <th scope="col">Fecha</th>
+				<th scope="col">Imagen</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Aciones</th>
             </tr>
@@ -55,8 +56,9 @@
                 <td>{{ paquete.description }}</td>
                 <td>{{ paquete.duration }}</td>
                 <td>{{ paquete.extras }}</td>
+				<td>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</td>
+				<td><img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.name }}" height="40"/></td>
                 <td>{{ paquete.price }}</td>
-                <td>{{ paquete.date ? paquete.date|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('paquetes_show', {'id': paquete.id}) }}" class="btn btn-info">Detalles</a>
                     <a href="{{ path('paquetes_edit', {'id': paquete.id}) }}" class="btn btn-dark">Editar</a>
@@ -75,7 +77,10 @@
 </div>
 </br>
 {% else %}
+<<<<<<< HEAD
 
+=======
+>>>>>>> ff2208e63e5041a5b77323fb8a364fd9acbc4349
 {% endif %}
 
 <!-- Start destinations Area -->
@@ -87,7 +92,7 @@
             <div class="col-lg-4">
 				<div class="single-destinations">
 					<div class="thumb">
-						<img src="../img/packages/d1.jpg" alt="">
+						<img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.name }}"/>
 					</div>
 					<div class="details">
 					<h4>{{ paquete.name }}</h4>
@@ -109,7 +114,7 @@
 						</li>
 						<li class="d-flex justify-content-between align-items-center">
 							<span>Precio por persona:</span>
-							<a href="#" class="price-btn">$ {{ paquete.price }}</a>
+							<a href="https://www.paypal.me/the97prime" class="price-btn">$ {{ paquete.price }}</a>
 						</li>
 					</ul>
 					</div>
